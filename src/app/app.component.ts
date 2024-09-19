@@ -23,15 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     MatFormFieldModule,
     MatSelectModule,
     MatProgressBarModule,
-    HttpClientModule, 
     MatButtonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
-
-  // cities = ["London", "New York", "Moscow", "Karachi"];
 
   countries = [
     {

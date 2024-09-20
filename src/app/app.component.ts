@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -31,33 +30,23 @@ export class AppComponent implements OnInit, OnDestroy {
   private unsubscribe$ = new Subject<void>();
 
   countries = [
-    {
-      name: 'Canada',
-      cities: ['Toronto', 'Vancouver', 'Montreal'],
-    },
-    {
-      name: 'Germany',
-      cities: ['Berlin', 'Munich', 'Frankfurt'],
-    },
-    {
-      name: 'India',
-      cities: ['Delhi', 'Mumbai', 'Bangalore'],
-    },
-    {
-      name: 'Japan',
-      cities: ['Tokyo', 'Osaka', 'Kyoto'],
-    },
-    {
-      name: 'Brazil',
-      cities: ['São Paulo', 'Rio de Janeiro', 'Brasília'],
-    },
-    {
-      name: 'South Africa',
-      cities: ['Johannesburg', 'Cape Town', 'Durban'],
-    },
+    { name: 'Canada', cities: ['Toronto', 'Vancouver', 'Montreal'] },
+    { name: 'Germany', cities: ['Berlin', 'Munich', 'Frankfurt'] },
+    { name: 'India', cities: ['Delhi', 'Mumbai', 'Bangalore'] },
+    { name: 'Japan', cities: ['Tokyo', 'Osaka', 'Kyoto'] },
+    { name: 'Brazil', cities: ['São Paulo', 'Rio de Janeiro', 'Brasília'] },
+    { name: 'South Africa', cities: ['Johannesburg', 'Cape Town', 'Durban'] },
+    { name: 'United States', cities: ['New York', 'Los Angeles', 'Chicago', 'Washington D.C.'] },
+    { name: 'China', cities: ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen'] },
+    { name: 'France', cities: ['Paris', 'Marseille', 'Lyon', 'Nice'] },
+    { name: 'United Kingdom', cities: ['London', 'Manchester', 'Birmingham', 'Edinburgh'] },
+    { name: 'Australia', cities: ['Sydney', 'Melbourne', 'Brisbane', 'Perth'] },
+    { name: 'Italy', cities: ['Rome', 'Milan', 'Naples', 'Florence'] },
+    { name: 'Spain', cities: ['Madrid', 'Barcelona', 'Valencia', 'Seville'] },
+    { name: 'Russia', cities: ['Moscow', 'Saint Petersburg', 'Novosibirsk', 'Ekaterinburg'] },
+    { name: 'Mexico', cities: ['Mexico City', 'Guadalajara', 'Monterrey', 'Puebla'] },
+    { name: 'Argentina', cities: ['Buenos Aires', 'Córdoba', 'Rosario', 'Mendoza'] },
   ];
-
-
   countryControl!: FormControl;
   cityControl!: FormControl;
 

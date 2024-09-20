@@ -1,9 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="top-bar">
   Dab's Weather App
 </mat-toolbar>
-<div class="content">
-  <div class="flex-row">
-    <mat-form-field class="mr">
+
+<div class="container">
+  <div class="search-bar">
+    <mat-form-field class="country-field">
       <mat-label>Select country</mat-label>
       <mat-select [formControl]="countryControl">
         <mat-option *ngFor="let country of countries" [value]="country">
@@ -11,7 +12,8 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-form-field>
+
+    <mat-form-field class="city-field">
       <mat-label>Select city</mat-label>
       <mat-select [formControl]="cityControl">
         <mat-option *ngFor="let city of cities$ | async" [value]="city">
@@ -21,6 +23,8 @@
     </mat-form-field>
   </div>
 
-  <br />
-  <router-outlet></router-outlet>
+  <div class="weather-container">
+    <!-- <app-weather-card *ngIf="weatherData$ | async as weatherData" [weatherData]="weatherData"></app-weather-card> -->
+     <router-outlet></router-outlet>
+  </div>
 </div>

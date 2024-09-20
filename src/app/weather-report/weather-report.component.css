@@ -11,7 +11,14 @@
 }
 
 mat-card {
-  width: 250px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-height: 250px;
+  width: 450px;
+  border-radius: 1rem;
+  background: rgb(255, 255, 255, 0.3);
+  padding: 1.5rem;
+  color: #fff;
 }
 
 mat-card::ng-deep.mat-card-header-text {
@@ -22,33 +29,64 @@ mat-card::ng-deep.mat-card-header-text {
   display: flex;
   flex-direction: row;
 
-  > div {
-      flex: 50%;
-      border-radius: 10px;
-      padding: 10px;
+  >div {
+    flex: 50%;
+    border-radius: 10px;
+    padding: 10px;
   }
 
-  > .outlook {
-      color: black;
-      background: rgba(0, 0, 0, 0.1);
+  >.outlook {
+    color: black;
+    background: rgba(0, 0, 0, 0.1);
   }
 
-  > .temp {
-      background: lightblue;
-      color: black;
-      margin-right: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+  >.temp {
+    background: lightblue;
+    color: black;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .big-text {
-      font-size: 30px;
-      margin-bottom: 10px;
+    font-size: 30px;
+    margin-bottom: 10px;
   }
 
   .image {
-      height: 80px;
+    height: 180px;
+  }
+}
+
+.mat-card-actions button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+
+  /* Adjustments for larger screens */
+  mat-card {
+    width: 100%;
+    /* Increase card width for more space */
+  }
+
+  .flex-row {
+    flex-direction: row;
+    /* Stack elements vertically on large screens */
+  }
+
+  .temp,
+  .outlook {
+    flex: 100%;
+    /* Full width for each section */
+    padding: 20px;
+  }
+
+  .image {
+    height: 120px;
+    /* Increase image height for larger screens */
   }
 }

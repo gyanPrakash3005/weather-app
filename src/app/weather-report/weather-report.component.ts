@@ -7,7 +7,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
 
-
 @Component({
   selector: 'app-weather-report',
   standalone: true,

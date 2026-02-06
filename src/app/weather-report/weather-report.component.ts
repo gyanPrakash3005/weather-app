@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WeatherService } from '../weather.service';
+import { WeatherService, WeatherResponse } from '../weather.service';
 import { CommonModule } from '@angular/common';
 import { Observable, map, filter, tap, concatMap } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
@@ -17,13 +17,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule
   ],
   templateUrl: './weather-report.component.html',
-  styleUrl: './weather-report.component.css',
-  providers: [
-    WeatherService // Add the service here
-  ]
+  styleUrl: './weather-report.component.css'
 })
-export class WeatherReportComponent implements OnInit{
-  data$!: Observable<any>;
+export class WeatherReportComponent implements OnInit {
+  data$!: Observable<WeatherResponse>;
 
   today: Date = new Date();
 

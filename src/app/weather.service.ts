@@ -1,28 +1,41 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { delay, map, Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { environment } from '../environments/environment';
+
+export interface WeatherResponse {
+  name: string;
+  main: {
+    temp: number;
+    feels_like: number;
+    humidity: number;
+    pressure: number;
+  };
+  wind: {
+    speed: number;
+    deg: number;
+  };
+  weather: {
+    main: string;
+    description: string;
+    icon: string;
+  }[];
+  image?: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
-  private apiKey = 'd46985034229686db00b49887c5677f5';
-  private apiUrl = `https://api.openweathermap.org/data/2.5/weather?appid=${this.apiKey}&units=metric`;
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
-
-  getWeather(city: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}&q=${city}`);
-  }
-
-  getWeatherForCity(city: string): Observable<any> {
-    const path = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=d46985034229686db00b49887c5677f5`;
-    return this.http.get<any>(path).pipe(
+  getWeatherForCity(city: string): Observable<WeatherResponse> {
+    const path = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=${environment.apiKey}`;
+    return this.http.get<WeatherResponse>(path).pipe(
       map(data => ({
         ...data,
-        image: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
-      })),
-      delay(500)
+        image: `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`
+      }))
     );
   }
 }
